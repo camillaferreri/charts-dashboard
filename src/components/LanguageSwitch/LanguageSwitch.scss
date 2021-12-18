@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.LanguageSwitch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 36px;
+    
+    .option {
+        color: map-get($colors, "beige");
+        font-family: $font-family-primary;
+        font-size: map-get($font-size, "base");
+        border-radius: 2.5rem;
+        padding: 0.5rem;
+        width: 20px;
+        height: 36px;
+        position: relative;
+        z-index: 1;
+        display: none;
+        text-align: center;
+        
+        &.selected {
+            display: block;
+            color: map-get($colors, "gray");
+            font-weight: 700;
+            background-color: map-get($colors, "beige");
+            order: -1;
+        }
+    }
+
+    &--open {
+        .option {
+            display: block;
+        }
+    }
+
+    .LanguageSwitch__bg {
+        border: 1px solid map-get($colors, "beige");
+        border-radius: 2.5rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

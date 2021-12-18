@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&family=Ropa+Sans&display=swap');
+
+$font-family-primary: 'Mulish', sans-serif;
+$font-family-secondary: 'Marcellus', serif;
+$font-family-tertiary: 'Ropa Sans', sans-serif;
+
+$colors: (
+    "gray": #393939,
+    "beige": #D4C7BE
+);
+
+$font-size: (
+    "base-xs": 12px,
+    "base": 16px,
+    "base-lg": 18px,
+    "large": 20px,
+    "large-lg": 40px,
+    "big": 30px,
+    "big-lg": 50px,
+);

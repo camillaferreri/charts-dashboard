@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+
+.Header {
+    background-color: map-get($colors, "gray");
+    color: map-get($colors, "beige");
+    padding: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    p {
+        font-size: map-get($font-size, "large");
+        font-family: $font-family-secondary;
+        margin: 0;
+    }
+}

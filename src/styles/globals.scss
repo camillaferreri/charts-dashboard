@@ -1,0 +1,28 @@
+@import "variables";
+
+
+body {
+    font-size: 16px;
+    font-family: $font-family-primary;
+    -webkit-font-smoothing: antialiased;
+    background-color: map-get($colors, "gray");
+    padding-top: 90px;
+    overflow-x: hidden;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 860px;
+
+    &--large {
+        max-width: 1024px;
+    }
+}
+
+.ProjectCard {
+    position: absolute;
+    border-radius: 170px;
+    top: 50%;
+    text-align: center;
+    right: 50%;
+}
