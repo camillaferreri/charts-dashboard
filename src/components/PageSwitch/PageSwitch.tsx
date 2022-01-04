@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -6,11 +6,10 @@ import '../../styles/globals.scss'
 import './PageSwitch.scss';
 
 interface PageSwitchProps {
-	// user?: {};
+	location: string
 }
 
-export const PageSwitch = ({  }: PageSwitchProps) => {
-	const location = useLocation();
+export const PageSwitch = ({ location }: PageSwitchProps) => {
 	const { t } = useTranslation()
 	const links = [
 		{
@@ -27,6 +26,7 @@ export const PageSwitch = ({  }: PageSwitchProps) => {
 		duration: .5,
 		ease: [0.37, 0, 0.63, 1]
 	}
+	
 	const variants = {
 		home: {
 			x: 0,
@@ -42,15 +42,15 @@ export const PageSwitch = ({  }: PageSwitchProps) => {
 				<NavLink 
 					key={link.label}
 					to={link.url}
-					className={`Link ${location.pathname === link.url && "selected"}`}
+					className={`Link ${location === link.url && "selected"}`}
 				>
-					{link.label}
+					<motion.span whileHover={{ scale: 1.05 }}>{link.label}</motion.span>
 				</NavLink>
 			))}
 			
 			<motion.div 
 				className="PageSwitch__bg"
-				animate={location.pathname === "/" ? "home" : "about"}
+				animate={location === "/" ? "home" : "about"}
 				variants={variants}
 				transition={transition}
 			/>

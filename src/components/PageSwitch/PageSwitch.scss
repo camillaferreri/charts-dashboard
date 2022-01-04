@@ -4,6 +4,7 @@
     border: 1px solid map-get($colors, "beige");
     border-radius: 2.5rem;
     position: relative;
+    background-color: map-get($colors, "gray");
 
     .Link {
         color: map-get($colors, "beige");
@@ -15,6 +16,10 @@
         position: relative;
         z-index: 1;
         text-align: center;
+
+        span {
+            display: block;
+        }
         
         &.selected {
             color: map-get($colors, "gray");

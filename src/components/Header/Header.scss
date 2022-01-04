@@ -4,20 +4,86 @@
     background-color: map-get($colors, "gray");
     color: map-get($colors, "beige");
     padding: 1.5rem;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    z-index: 1;
 
     p {
-        font-size: map-get($font-size, "large");
         font-family: $font-family-secondary;
         margin: 0;
+    }
+
+    &--desktop {
+        display: none;
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &--mobile {
+        display: block;
+        position: relative;
+
+        p {
+            text-align: center;
+        }
+
+        .Header__button {
+            position: absolute;
+            top: -0.5rem;
+            right: 0;
+            z-index: 2;
+            border: none;
+            background-color: transparent;
+            width: 36px;
+            height: 36px;
+        }
+
+        .Header__bg {
+            background-color: map-get($colors, "beige");
+            position: absolute;
+            border-radius: 2rem;
+            top: -0.5rem;
+            right: 0;
+            height: 36px;
+            width: 36px;
+            z-index: 1;
+        }
+
+        .Header__content {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+
+            .Header__bottomLine {
+                display: flex;
+                justify-content: space-between;
+    
+                .LanguageSwitch,
+                .PageSwitch {
+                    box-shadow: 0 0 20px 0 rgba(map-get($colors, "gray"), 0.3);
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 680px) {
+        p {
+            font-size: map-get($font-size, "large");
+        }
+
+        &--desktop {
+            display: block;
+        }
+
+        &--mobile {
+            display: none;
+        }
     }
 }

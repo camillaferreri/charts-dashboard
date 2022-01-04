@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './i18n';
 
@@ -9,12 +8,10 @@ import Home from "./pages/Home";
 import './App.scss';
 
 function App() {
-  const { t } = useTranslation();
-
   return (
     <div className="App">
         <Router>
-          <Header user={{}} onLogin={() => {}} onLogout={() => {}} onCreateAccount={() => {}} />
+          <Header />
           
           <Routes>
             <Route path="/about">

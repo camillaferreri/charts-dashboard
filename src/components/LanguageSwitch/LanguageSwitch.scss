@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     height: 36px;
+    border-radius: 2.5rem;
     
     .option {
         color: map-get($colors, "beige");
@@ -18,6 +19,7 @@
         z-index: 1;
         display: none;
         text-align: center;
+        cursor: pointer;
         
         &.selected {
             display: block;
@@ -35,6 +37,7 @@
     }
 
     .LanguageSwitch__bg {
+        background-color: map-get($colors, "gray");
         border: 1px solid map-get($colors, "beige");
         border-radius: 2.5rem;
         position: absolute;

@@ -12,7 +12,10 @@ const Template: ComponentStory<typeof PageSwitch> = (args) => <PageSwitch {...ar
 
 export const Home = Template.bind({});
 Home.args = {
+  location: "/"
 };
 
-// export const LoggedOut = Template.bind({});
-// LoggedOut.args = {};
+export const About = Template.bind({});
+About.args = {
+  location: "/about"
+};

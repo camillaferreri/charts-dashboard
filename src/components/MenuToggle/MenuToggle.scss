@@ -1,0 +1,12 @@
+@import "../../styles/variables.scss";
+
+.MenuToggle {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    z-index: 2;
+    border: none;
+    background-color: transparent;
+    width: 36px;
+    height: 36px;
+}

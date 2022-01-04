@@ -1,9 +1,13 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
+import portfolio_banner from "../assets/projects/portfolio/banner.jpg"
+import wedding_banner from "../assets/projects/wedding/banner.jpg"
+import architect_banner from "../assets/projects/architect/banner.jpg"
+
 interface HomeProps {
-	
 }
+	
 interface smallVariantProps {
     opacity: number,
     translateX: string,
@@ -30,8 +34,9 @@ export const Home = ({  }: HomeProps) => {
         hidden: {
             opacity: 0,
             transition: {
-                duration: 0.8,
-                opacity: { delay: -0.8 }
+                delay: 0.2,
+                duration: 0.4,
+                opacity: { delay: -2 }
             }
         }
     }
@@ -40,22 +45,26 @@ export const Home = ({  }: HomeProps) => {
         {
             id: 0,
             name: "Portfolio",
-            bg: "green"
+            bg: "green",
+            image: portfolio_banner
         },
         {
             id: 1,
             name: "Wedding",
-            bg: "pink"
+            bg: "pink",
+            image: wedding_banner
         },
         {
             id: 2,
             name: "Architect",
-            bg: "blue"
+            bg: "blue",
+            image: architect_banner
         },
         {
             id: 3,
             name: "Architect",
-            bg: "orange"
+            bg: "orange",
+            image: architect_banner
         }
     ]
 
@@ -102,10 +111,11 @@ export const Home = ({  }: HomeProps) => {
                             duration: 1,
                         }}
                         style={{
-                            backgroundColor: project.bg,
-                            translateY: "-50%"
+                            translateY: "50%"
                         }}
-                    />
+                    >
+                        <img src={project.image} alt="" />
+                    </motion.div>
                 )
             })}
         </main>
