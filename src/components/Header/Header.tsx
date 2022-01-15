@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom'
 
 import PageSwitch from '../PageSwitch/PageSwitch'
 import LanguageSwitch from '../LanguageSwitch/LanguageSwitch'
+import MenuToggle from "../MenuToggle/MenuToggle"
+import Contacts from "../Contacts/Contacts"
 
-import openIcon from "../../assets/open-icon.svg"
-import closeIcon from "../../assets/close-icon.svg"
+import { bg_transition, bg_variants, content_variants, content_children_variants, text_variants } from "./animations"
 
 import './Header.scss'
 import '../../styles/globals.scss'
-import MenuToggle from "../MenuToggle/MenuToggle"
 
 interface HeaderProps {
 }
@@ -18,35 +18,7 @@ interface HeaderProps {
 export const Header = ({  }: HeaderProps) => {
 	const location = useLocation();
 	let [ isClose, setIsClose ] = useState(true)
-
-	const bg_transition = { 
-		duration: .5,
-		ease: [0.37, 0, 0.63, 1]
-	}
 	
-	const bg_variants = {
-		close: { scale: 1 },
-		open: { scale: 75 }
-	}
-
-	const content_variants = {
-		close: {
-			transition: { staggerChildren: 0.05, staggerDirection: -1 }
-		},
-		open: {
-			transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-		}
-	}
-
-	const content_children_variants = {
-		close: {
-			opacity: 0
-		},
-		open: {
-			opacity: 1
-		}
-	}
-
 	return (
 		<nav className="Header">
 			<div className="Header--desktop">
@@ -66,12 +38,8 @@ export const Header = ({  }: HeaderProps) => {
 					transition={bg_transition}
 				/>
 
-				<p>Camilla Ferreri</p>
+				<motion.p variants={text_variants}>Camilla Ferreri</motion.p>
 
-				{/* <button className="Header__button" onClick={() => setIsClose(!isClose)}>
-					<img src={isClose ? openIcon : closeIcon} alt="" />
-				</button> */}
-				
 				<MenuToggle 
 					isClose={isClose} 
 					toggleClose={() => setIsClose(!isClose)}
@@ -85,7 +53,7 @@ export const Header = ({  }: HeaderProps) => {
 						className="Header__contacts"
 						variants={content_children_variants}
 					>
-						<p>hi</p>
+						<Contacts />
 					</motion.div>
 
 					<motion.div 

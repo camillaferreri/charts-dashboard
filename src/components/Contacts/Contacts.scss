@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.Contacts {
+    &__link {
+        display: block;
+        border-bottom: 1px solid map-get($colors, "gray");
+        color: map-get($colors, "gray");
+        text-decoration: none;
+        text-align: center;
+        font-weight: 600;
+        overflow: hidden;
+        position: relative;
+        
+        span {
+            display: block;
+            padding: .8rem 1.5rem;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__hover {
+        white-space: nowrap;
+        overflow-x: visible;
+        background-color: map-get($colors, "gray");
+        color: map-get($colors, "beige");
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        span {
+            display: inline-block;
+            font-style: italic;
+            font-weight: 600;
+        }
+    }
+}

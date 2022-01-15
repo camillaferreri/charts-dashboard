@@ -31,17 +31,9 @@
 
         p {
             text-align: center;
-        }
-
-        .Header__button {
-            position: absolute;
-            top: -0.5rem;
-            right: 0;
-            z-index: 2;
-            border: none;
-            background-color: transparent;
-            width: 36px;
-            height: 36px;
+            // color: map-get($colors, "gray");
+            position: relative;
+            z-index: 1;
         }
 
         .Header__bg {
@@ -60,6 +52,14 @@
             flex-direction: column;
             position: relative;
             z-index: 1;
+            min-height: 90vh;
+
+            .Header__contacts {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: center;
+            }
 
             .Header__bottomLine {
                 display: flex;
