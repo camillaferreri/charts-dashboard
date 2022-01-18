@@ -7,16 +7,16 @@ import portfolio_banner from "../assets/projects/portfolio/banner.jpg"
 import wedding_banner from "../assets/projects/wedding/banner.jpg"
 import architect_banner from "../assets/projects/architect/banner.jpg"
 
-interface HomeProps {
-}
-	
-interface smallVariantProps {
-	translateX: string,
-}
+interface HomeProps {}
+interface smallVariantProps { translateX: string }
+interface labelVariantProps { y: string, x: string }
 
 export const Home = ({  }: HomeProps) => {
 	const [ projectSelected, setProjectSelected ] = useState(0)
 	const [ prevProjectId, setPrevProjectId ] = useState(3)
+	const [ nextProjectId, setNextProjectId ] = useState(1)
+	const [ prevOnHover, setPrevOnHover ] = useState(false)
+	const [ nextOnHover, setNextOnHover ] = useState(false)
 	const isSmall = useIsSmall()
 
 	const variants = {
@@ -45,6 +45,17 @@ export const Home = ({  }: HomeProps) => {
 				opacity: { delay: -2 }
 			}
 		}
+	}
+
+	const label_variants = {
+		initial: ({ y }: labelVariantProps) => ({
+			y: y,
+			x: 0,
+		}),
+		hover: ({ y, x }: labelVariantProps) => ({
+			y: y,
+			x: x
+		})
 	}
 
 	const projectData = [
@@ -76,15 +87,23 @@ export const Home = ({  }: HomeProps) => {
 
 	const nextProject = () => {
 		setPrevProjectId(projectSelected)
-
+		
 		if (projectSelected +1 < projectData.length) {
 			setProjectSelected(projectSelected + 1)
 		} else {
 			setProjectSelected(0)
 		}
+
+		if (projectSelected +2 < projectData.length) {
+			setNextProjectId(projectSelected + 2)
+		} else {
+			setNextProjectId(projectSelected - 2)
+		}
 	}
 
 	const prevProject = () => {
+		setNextProjectId(projectSelected)
+
 		if (projectSelected === 0) {
 			setProjectSelected(projectData.length -1)
 			setPrevProjectId(projectData.length - 2)
@@ -96,7 +115,6 @@ export const Home = ({  }: HomeProps) => {
 			} else {
 				setPrevProjectId(projectSelected - 2)
 			}
-
 		}
 	}
 
@@ -110,45 +128,63 @@ export const Home = ({  }: HomeProps) => {
 		return [{ opacity: 0 }]
 	}
 
+	const renderProjectCard = () => (
+		projectData.map(project => {
+			const [i, whereGo] = getProjectVariantsData(project.id)
+			return (
+				<motion.div
+					className={`ProjectCard ${projectSelected === project.id && "main"}`}
+					key={project.id}
+					custom={i}
+					animate={projectSelected === project.id ? "main" : (whereGo ? "small" : "hidden")}
+					variants={variants}
+					onClick={() => whereGo === "prev" ? prevProject() : (whereGo === "next" ? nextProject() : null)}
+					transition={{ duration: 1 }}
+					onHoverStart={() => { (whereGo === "next") && setNextOnHover(true); (whereGo === "prev") && setPrevOnHover(true) }}
+					onHoverEnd={() => { (whereGo === "next") && setNextOnHover(false); (whereGo === "prev") && setPrevOnHover(false) }}
+				>
+					<motion.img 
+						src={project.image} 
+						alt="" 
+						variants={{
+							small: { filter: `blur(4px)` },
+							main: { filter: `blur(0px)` }
+						}}
+					/>
+				</motion.div>
+			)
+		})
+	)
+
+	const renderPrevLabel = () => (
+		<div className="ProjectLabel ProjectLabel--prev">
+			<motion.div 
+				custom={{ y: - (prevProjectId * 24), x: 10 }}
+				animate={ prevOnHover ? "hover" : "initial" }
+				variants={label_variants}
+			>
+				{projectData.map(project => (<p className="ProjectLabel__text">{project.name}</p>))}
+			</motion.div>
+		</div>
+	)
+
+	const renderNextLabel = () => (
+		<div className="ProjectLabel ProjectLabel--next">
+			<motion.div 
+				custom={{ y: - (nextProjectId * 24), x: -10 }}
+				animate={ nextOnHover ? "hover" : "initial" }
+				variants={label_variants}
+			>
+				{projectData.map(project => (<p className="ProjectLabel__text">{project.name}</p>))}
+			</motion.div>
+		</div>
+	)
+
 	return (
 		<main className="Home">
-			{projectData.map(project => {
-				const [i, whereGo] = getProjectVariantsData(project.id)
-				return (
-					<motion.div
-						className={`ProjectCard ${projectSelected === project.id && "main"}`}
-						key={project.id}
-						custom={i}
-						animate={projectSelected === project.id ? "main" : (whereGo ? "small" : "hidden")}
-						variants={variants}
-						onClick={() => whereGo === "prev" ? prevProject() : (whereGo === "next" ? nextProject() : null)}
-						transition={{ duration: 1 }}
-					>
-						<motion.img 
-							src={project.image} 
-							alt="" 
-							variants={{
-								small: { filter: `blur(4px)` },
-								main: { filter: `blur(0px)` }
-							}}
-						/>
-					</motion.div>
-				)
-			})}
-
-			<div className="prevButton">
-				<motion.div
-					animate={{
-						y: - (prevProjectId * 24)
-					}}
-				>
-					{projectData.map(project => {
-						return (
-							<p className="prevText">{project.name}</p>
-						)
-					})}
-				</motion.div>
-			</div>
+			{renderProjectCard()}
+			{renderPrevLabel()}
+			{renderNextLabel()}
 		</main>
 	)
 }
