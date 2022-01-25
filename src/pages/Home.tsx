@@ -19,7 +19,7 @@ export const Home = ({  }: HomeProps) => {
 	const [ nextOnHover, setNextOnHover ] = useState(false)
 	const isSmall = useIsSmall()
 
-	const variants = {
+	const project_card_variants = {
 		small: ({ translateX }: smallVariantProps) => ({
 			width: 120,
 			height: 120,
@@ -47,6 +47,11 @@ export const Home = ({  }: HomeProps) => {
 		}
 	}
 
+	const project_card_transition = { 
+		duration: 1,
+		ease: [0.40, 0, 0.40, 1]
+	}
+
 	const label_variants = {
 		initial: ({ y }: labelVariantProps) => ({
 			y: y,
@@ -60,7 +65,8 @@ export const Home = ({  }: HomeProps) => {
 
 	const label_transition = {
 		duration: .3,
-		ease: "easeInOut",
+		// ease: "easeInOut",
+		ease: [0.40, 0, 0.40, 1]
 		// delay: .6
 	}
 
@@ -139,13 +145,13 @@ export const Home = ({  }: HomeProps) => {
 			const [i, whereGo] = getProjectVariantsData(project.id)
 			return (
 				<motion.div
-					className={`ProjectCard ${projectSelected === project.id && "main"}`}
 					key={project.id}
+					className={`ProjectCard ${projectSelected === project.id && "main"}`}
 					custom={i}
 					animate={projectSelected === project.id ? "main" : (whereGo ? "small" : "hidden")}
-					variants={variants}
+					variants={project_card_variants}
+					transition={project_card_transition}
 					onClick={() => whereGo === "prev" ? prevProject() : (whereGo === "next" ? nextProject() : null)}
-					transition={{ duration: 1 }}
 					onHoverStart={() => { (whereGo === "next") && setNextOnHover(true); (whereGo === "prev") && setPrevOnHover(true) }}
 					onHoverEnd={() => { (whereGo === "next") && setNextOnHover(false); (whereGo === "prev") && setPrevOnHover(false) }}
 				>
