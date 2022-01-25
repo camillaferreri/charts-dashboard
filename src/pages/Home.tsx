@@ -34,7 +34,7 @@ export const Home = ({  }: HomeProps) => {
 		main: {
 			width: isSmall ? "30vh" : 320,
 			height: isSmall ? "50vh" : "80vh",
-			x: isSmall ? "calc(50vw - 50%)" : "calc(0vw + 0px)",
+			x: isSmall ? "50%" : "calc(0vw + 0px)",
 			y: isSmall ? "30%" : "50%"
 		},
 		hidden: {
@@ -56,6 +56,12 @@ export const Home = ({  }: HomeProps) => {
 			y: y,
 			x: x
 		})
+	}
+
+	const label_transition = {
+		duration: .3,
+		ease: "easeInOut",
+		// delay: .6
 	}
 
 	const projectData = [
@@ -162,6 +168,7 @@ export const Home = ({  }: HomeProps) => {
 				custom={{ y: - (prevProjectId * 24), x: 10 }}
 				animate={ prevOnHover ? "hover" : "initial" }
 				variants={label_variants}
+				transition={label_transition}
 			>
 				{projectData.map(project => (<p className="ProjectLabel__text">{project.name}</p>))}
 			</motion.div>
@@ -174,6 +181,7 @@ export const Home = ({  }: HomeProps) => {
 				custom={{ y: - (nextProjectId * 24), x: -10 }}
 				animate={ nextOnHover ? "hover" : "initial" }
 				variants={label_variants}
+				transition={label_transition}
 			>
 				{projectData.map(project => (<p className="ProjectLabel__text">{project.name}</p>))}
 			</motion.div>
