@@ -1,15 +1,14 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
-import { useIsSmall } from "../utils/useMediaQuery"
+import { useIsSmall } from "../../utils/useMediaQuery"
+import { project_card_variants, project_card_transition, label_variants, label_transition } from "./animations"
 
-import portfolio_banner from "../assets/projects/portfolio/banner.jpg"
-import wedding_banner from "../assets/projects/wedding/banner.jpg"
-import architect_banner from "../assets/projects/architect/banner.jpg"
+import portfolio_banner from "../../assets/projects/portfolio/banner.jpg"
+import wedding_banner from "../../assets/projects/wedding/banner.jpg"
+import architect_banner from "../../assets/projects/architect/banner.jpg"
 
 interface HomeProps {}
-interface smallVariantProps { translateX: string }
-interface labelVariantProps { y: string, x: string }
 
 export const Home = ({  }: HomeProps) => {
 	const [ projectSelected, setProjectSelected ] = useState(0)
@@ -19,80 +18,25 @@ export const Home = ({  }: HomeProps) => {
 	const [ nextOnHover, setNextOnHover ] = useState(false)
 	const isSmall = useIsSmall()
 
-	const project_card_variants = {
-		small: ({ translateX }: smallVariantProps) => ({
-			width: 120,
-			height: 120,
-			opacity: 1,
-			translateX: translateX,
-			y: isSmall ? "calc(50vh - -60px)" : "50%",
-			transition: {
-				duration: 0.8,
-				opacity: { delay: 0.8 }
-			}
-		}),
-		main: {
-			width: isSmall ? "30vh" : 320,
-			height: isSmall ? "50vh" : "80vh",
-			x: isSmall ? "50%" : "calc(0vw + 0px)",
-			y: isSmall ? "30%" : "50%"
-		},
-		hidden: {
-			opacity: 0,
-			transition: {
-				delay: 0.2,
-				duration: 0.4,
-				opacity: { delay: -2 }
-			}
-		}
-	}
-
-	const project_card_transition = { 
-		duration: 1,
-		ease: [0.40, 0, 0.40, 1]
-	}
-
-	const label_variants = {
-		initial: ({ y }: labelVariantProps) => ({
-			y: y,
-			x: 0,
-		}),
-		hover: ({ y, x }: labelVariantProps) => ({
-			y: y,
-			x: x
-		})
-	}
-
-	const label_transition = {
-		duration: .3,
-		// ease: "easeInOut",
-		ease: [0.40, 0, 0.40, 1]
-		// delay: .6
-	}
-
 	const projectData = [
 		{
 			id: 0,
 			name: "Portfolio",
-			bg: "green",
 			image: portfolio_banner
 		},
 		{
 			id: 1,
 			name: "Wedding",
-			bg: "pink",
 			image: wedding_banner
 		},
 		{
 			id: 2,
 			name: "Architect",
-			bg: "blue",
 			image: architect_banner
 		},
 		{
 			id: 3,
 			name: "Architect",
-			bg: "orange",
 			image: architect_banner
 		}
 	]
@@ -132,12 +76,12 @@ export const Home = ({  }: HomeProps) => {
 
 	const getProjectVariantsData = (id : number) => {
 		if (projectSelected - 1 === id || (id === projectData.length -1 && projectSelected === 0)) {
-			return [{ translateX: "calc(-50vw - -60px)" }, "prev"]
+			return [{ translateX: "calc(-50vw - -60px)", isSmall }, "prev"]
 		}
 		if (projectSelected + 1 === id || (projectSelected === projectData.length -1 && id === 0)) {
-			return [{ translateX: "calc(50vw + 60px)" }, "next"]
+			return [{ translateX: "calc(50vw + 60px)", isSmall }, "next"]
 		}
-		return [{ opacity: 0 }]
+		return [{ opacity: 0, isSmall }]
 	}
 
 	const renderProjectCard = () => (
