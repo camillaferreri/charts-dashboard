@@ -1,2 +1,0 @@
-# camilla-ferreri-portfolio
-Portfolio

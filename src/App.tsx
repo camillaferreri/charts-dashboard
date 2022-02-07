@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import './i18n';
-
 import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
+import AdvancedAnalysis from "./pages/AdvancedAnalysis/AdvancedAnalysis";
 
 import './App.scss';
 
@@ -14,10 +12,7 @@ function App() {
           <Header />
           
           <Routes>
-            <Route path="/about">
-              <></>
-            </Route>
-            <Route path="/" element={<Home />} />
+            <Route path="/analisi-avanzata" element={<AdvancedAnalysis />} />
           </Routes>
       </Router>
     </div>

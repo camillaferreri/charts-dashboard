@@ -1,11 +1,12 @@
 @import "variables";
+@import "typography";
 @import "./pages/Home.scss";
 
 body {
     font-size: 16px;
-    font-family: $font-family-primary;
+    font-family: "Plus Jakarta Display", sans-serif;
     -webkit-font-smoothing: antialiased;
-    background-color: map-get($colors, "gray");
+    background-color: map-get($colors, "lightgray");
     padding-top: 90px;
     overflow-x: hidden;
 }

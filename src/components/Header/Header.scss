@@ -1,89 +1,24 @@
 @import "../../styles/variables.scss";
 
 .Header {
-    background-color: map-get($colors, "gray");
-    color: map-get($colors, "beige");
-    padding: 1.5rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+	background-color: map-get($colors, "white");
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	box-shadow: 0 0 10px 0 rgba(map-get($colors, "darkgray"), 0.4);
 
-    p {
-        font-family: $font-family-secondary;
-        margin: 0;
-    }
+	.logo {
+		height: 45px;
+		margin-right: 1rem;
+	}
 
-    &--desktop {
-        display: none;
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-
-    &--mobile {
-        display: block;
-        position: relative;
-
-        p {
-            text-align: center;
-            // color: map-get($colors, "gray");
-            position: relative;
-            z-index: 1;
-        }
-
-        .Header__bg {
-            background-color: map-get($colors, "beige");
-            position: absolute;
-            border-radius: 2rem;
-            top: -0.5rem;
-            right: 0;
-            height: 36px;
-            width: 36px;
-            z-index: 1;
-        }
-
-        .Header__content {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-            min-height: 90vh;
-
-            .Header__contacts {
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .Header__bottomLine {
-                display: flex;
-                justify-content: space-between;
-    
-                .LanguageSwitch,
-                .PageSwitch {
-                    box-shadow: 0 0 20px 0 rgba(map-get($colors, "gray"), 0.3);
-                }
-            }
-        }
-    }
-
-    @media screen and (min-width: 860px) {
-        p {
-            font-size: map-get($font-size, "large");
-        }
-
-        &--desktop {
-            display: block;
-        }
-
-        &--mobile {
-            display: none;
-        }
-    }
+	.leftLinks {
+		display: inline-flex;
+		align-items: center;
+	}
 }

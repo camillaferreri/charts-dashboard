@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.NavLink {
+	color: map-get($colors, "darkgray");
+	text-decoration: none;
+	margin: 0 1rem;
+	display: inline-flex;
+	align-content: center;
+	gap: 1rem;
+
+	&--active {
+		color: map-get($colors, "blue");
+		font-weight: 600;
+	}
+}
