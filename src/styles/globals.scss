@@ -1,6 +1,6 @@
 @import "variables";
 @import "typography";
-@import "./pages/Home.scss";
+@import "./pages/AdvancedAnalysis.scss";
 
 body {
     font-size: 16px;
@@ -18,4 +18,12 @@ body {
     &--large {
         max-width: 1024px;
     }
+}
+
+h2 {
+    font-size: map-get($font-size, "large");
+}
+
+h4 {
+    font-size: map-get($font-size, "base-lg");
 }

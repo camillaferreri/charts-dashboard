@@ -7,6 +7,7 @@
 	display: inline-flex;
 	align-content: center;
 	gap: 1rem;
+	white-space: nowrap;
 
 	&--active {
 		color: map-get($colors, "blue");
