@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useLocation } from "react-router-dom"
 
 import { NavLink } from "../NavLink/NavLink"
@@ -7,11 +6,23 @@ import { NavButton } from "../NavButton/NavButton"
 import './Header.scss'
 import '../../styles/globals.scss'
 
-interface HeaderProps {
-}
+interface HeaderProps {}
 
 export const Header = ({  }: HeaderProps) => {
 	const location = useLocation()
+
+	const leftButtons = [
+		{ 
+			label: "Recensioni",
+			url: "/#",
+			active: true
+		},
+		{ 
+			label: "Sondaggi >",
+			url: "/#",
+		},
+	]
+
 	const rightLinks = [
 		{ 
 			label: "Home",
@@ -60,6 +71,16 @@ export const Header = ({  }: HeaderProps) => {
 		},
 	]
 
+	const renderLeftButtons = () => (
+		leftButtons.map(link => (
+			<NavButton 
+				label={link.label}
+				url={link.url}
+				active={link.active}
+			/>
+		))
+	)
+
 	const renderRightLinks = () => (
 		rightLinks.map(link => (
 			<NavLink 
@@ -73,20 +94,12 @@ export const Header = ({  }: HeaderProps) => {
 
 	return (
 		<nav className="Header">
-			<div className="leftLinks">
+			<div className="Header__leftLinks">
 				<img src="/logo.png" className="logo" alt="" />
-				<NavButton 
-					label={"Recensioni"}
-					url={"/#"}
-					active
-				/>
-				<NavButton 
-					label={"Sondaggi >"}
-					url={"/#"}
-				/>
+				{renderLeftButtons()}
 			</div>
 
-			<div className="rightLinks">
+			<div className="Header__rightLinks">
 				{renderRightLinks()}
 			</div>
 		</nav>
