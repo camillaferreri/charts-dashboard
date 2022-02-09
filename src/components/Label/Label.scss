@@ -1,0 +1,12 @@
+@import "../../styles/variables.scss";
+
+.Label {
+	border-radius: 2rem;
+	padding: .4rem;
+	margin: .4rem;
+	color: #fff;
+	display: inline-block;
+	min-width: 80px;
+	text-align: center;
+	font-size: .8rem;
+}
