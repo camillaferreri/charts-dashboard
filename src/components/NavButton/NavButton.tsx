@@ -4,8 +4,6 @@ import '../../styles/globals.scss'
 interface NavButtonProps {
 	label?: string
 	url: string
-	icon?: string
-	typeButton?: boolean
 	active?: boolean
 }
 

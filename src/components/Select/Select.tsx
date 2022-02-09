@@ -11,12 +11,12 @@ interface SelectProps {
   options: Array<OptionProps>
 }
 
-export const Select = ({ label, options }: SelectProps) => {
+export const Select = ({ label, options, ...rest }: SelectProps) => {
 	return (
 		<label className='Select'>
       {label}
 
-      <select>
+      <select {...rest}>
         {options && options.map(option => (
           <option value={option.value}>{option.label}</option>
         ))}
