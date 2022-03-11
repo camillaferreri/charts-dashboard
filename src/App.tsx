@@ -1,19 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import AdvancedAnalysis from "./pages/AdvancedAnalysis/AdvancedAnalysis";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
 
-import './App.scss';
+import './styles/globals.scss';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        
+      <Router>        
         <Routes>
-          <Route path="*" element={<Navigate to="/analisi-avanzata" />} />
-          <Route path="/analisi-avanzata" element={<AdvancedAnalysis />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/game/:slug" element={<Game />} />
         </Routes>
       </Router>
     </div>

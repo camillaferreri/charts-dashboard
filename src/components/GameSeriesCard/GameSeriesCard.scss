@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.GameSeriesCard {
+  padding: 2rem;
+  border-radius: 2rem;
+  transition: box-shadow 300ms ease-in-out;
+  text-decoration: none;
+  
+  img {
+    height: 120px;
+    width: 240px;
+    object-fit: contain;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 1rem;
+    color: map-get($colors, "blue");
+    font-weight: 500;
+    font-size: map-get($font-size, "base");
+  }
+
+  &:hover {
+    box-shadow: 0 0 20px 0px map-get($colors, "blue");
+  }
+}

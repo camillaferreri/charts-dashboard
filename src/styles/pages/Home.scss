@@ -1,0 +1,17 @@
+.Home {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  
+  h1 {
+    text-align: center;
+    color: map-get($colors, "blue");
+    margin-bottom: 4rem;
+  }
+
+  .GameSeriesWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+}

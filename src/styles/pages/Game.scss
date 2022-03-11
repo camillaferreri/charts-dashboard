@@ -1,0 +1,30 @@
+.Game {
+  .Toolbar {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+
+    a {
+      color: map-get($colors, "blue");
+      text-decoration: none;
+    }
+
+    button {
+      background-color: map-get($colors, "blue");
+      color: #fff;
+      border: none;
+      font-size: map-get($font-size, "base");
+      font-family: "Roboto Mono";
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .GameWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}

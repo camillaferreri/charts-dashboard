@@ -1,25 +1,23 @@
 @import "variables";
 @import "typography";
-@import "./pages/AdvancedAnalysis.scss";
+
+@import "./pages/Home.scss";
+@import "./pages/Game.scss";
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
 
 body {
-    font-size: 16px;
-    font-family: "Plus Jakarta Display", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    background-color: map-get($colors, "lightgray");
-    padding-top: 90px;
-    overflow-x: hidden;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	padding-top: 90px;
+	font-family: "Roboto Mono";
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 1570px;
-}
-
-h2 {
-    font-size: map-get($font-size, "large");
-}
-
-h4 {
-    font-size: map-get($font-size, "base-lg");
+	margin: 0 auto;
+	max-width: 1200px;
 }
